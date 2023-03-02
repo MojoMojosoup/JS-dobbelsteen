@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.dice {
+  height: 200px;
+}
+
+.statsDiv {
+  width: 250px;
+  padding: 10px;
+}
