@@ -8,7 +8,14 @@
   <title>Roll dice!</title>
 </head>
 <body>
-  <img id="dieImg" src="img/die6.png" class="dice" onclick="rollDice()">
+  <div class="dice" onpointerup="rollDice(event)">
+    <div class="side one"></div>
+    <div class="side two"></div>
+    <div class="side three"></div>
+    <div class="side four"></div>
+    <div class="side five"></div>
+    <div class="side six"></div>
+  </div>
   <div class="statsDiv">
     <p id="averageText">Average roll: 0</p>
     <ul>

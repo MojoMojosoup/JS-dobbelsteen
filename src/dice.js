@@ -1,10 +1,28 @@
 const diceHistory = [];
-    
+const finalDegrees = [
+  [0, 0, 0],
+  [90, 0, 0],
+  [90, 0, 90],
+  [90, 0, 270],
+  [90, 0, 180],
+  [180, 0, 0]
+];
+
 function rollDice(e) {
   const rolled = Math.ceil(Math.random() * 6);
   diceHistory.push(rolled);
-  document.getElementById("dieImg").src = `img/die${rolled}.png`;
-  document.getElementById("averageText").innerText = `Average roll: ${getAverage()}`;
+  let dice = document.querySelector('div.dice');
+  const y = finalDegrees[rolled-1][0], x = finalDegrees[rolled-1][1], z = finalDegrees[rolled-1][2];
+  dice.animate([
+    { composite: 'auto' },
+    { transform: `translateY(-150px) rotateY(${y - Math.random() *240}deg) rotateX(${x -Math.random() * 240}deg) rotateZ(${z - Math.random() *240}deg)` },
+    { transform: `translateY(0px) rotateY(${y - Math.random() *160}deg) rotateX(${x - Math.random() *160}deg) rotateZ(${z - Math.random() *160}deg)` },
+    { transform: `translateY(-70px) rotateY(${y - Math.random() * 80}deg) rotateX(${x -Math.random() * 80}deg) rotateZ(${z -Math.random() * 80}deg)` },
+    { transform: `translateY(0px) rotateY(${y}deg) rotateX(${x}deg) rotateZ(${z}deg)` },
+  ],
+    { iterations: 1, duration: 1000, fill: 'forwards', easing: 'ease-out'}
+  );
+  document.querySelector("#averageText").innerText = `Average roll: ${getAverage()}`;
   updateRolledAmounts(rolled);
   console.log(`Rolled: ${rolled}`);
 }
